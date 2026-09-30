@@ -1,0 +1,18 @@
+{
+ "repository": "sample_repo",
+ "commit": "WORKTREE",
+ "label": "worktree",
+ "timestamp": 1790751378.935686,
+ "n_chunks": 14,
+ "embedder": "lsa-13-2d364490",
+ "representation": "contextual",
+ "files": {
+  "auth.py": "c910866a9e7b8ebd55c301a805ffe5f7e0b0157f",
+  "client.py": "814e037eb6d1286c497d966bb65af0eb56d37e75",
+  "database.py": "0cca979d39fb55e184b46da4aeff5e1df988ca7c",
+  "preprocessing.py": "b87a85df3ffffd8d5ecc36e0948d2839bb692b29",
+  "request_model.py": "bdfc10a5a01f566e663f805b8b0b7e47f50a0f40"
+ },
+ "base": null,
+ "built_at": 1790751381.9795182
+}

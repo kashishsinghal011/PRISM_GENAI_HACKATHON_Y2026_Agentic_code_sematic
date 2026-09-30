@@ -1,0 +1,6 @@
+collecting up to 100000 functions ...
+collected 102000 functions
+size=  1000 build=   3.2s total mean=6.07ms p95=7.59ms ann=0.16 bm25=0.28 rerank=3.42
+size= 10000 build=  10.0s total mean=3.78ms p95=4.34ms ann=0.17 bm25=0.17 rerank=1.77
+size= 50000 build=  34.6s total mean=6.25ms p95=5.89ms ann=0.2 bm25=0.2 rerank=1.78
+size=100000 build=  58.5s total mean=5.47ms p95=6.3ms ann=0.23 bm25=0.24 rerank=1.86

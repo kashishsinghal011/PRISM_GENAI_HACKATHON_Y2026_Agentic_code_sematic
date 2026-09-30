@@ -1,0 +1,50 @@
+# Profile for the CPU-only LSA fallback encoder. Weights were tuned on the validation half of the local PROXY benchmark
+# (results/ablation_local.json) and evaluated on the held-out half. Re-tune for a pretrained embedding model.
+embedding_model:
+  backend: lsa
+  name: BAAI/bge-small-en-v1.5
+  fallback_to_lsa: true
+  lsa_dim: 128
+  batch_size: 32
+  normalize_embeddings: true
+  device: cpu
+  max_seq_length: 256
+representation: contextual
+chunking:
+  max_chunk_lines: 60
+  max_file_bytes: 1000000
+query:
+  expand_concepts: true
+  classify: true
+retrieval:
+  dense_top_k: 100
+  bm25_top_k: 100
+  identifier_top_k: 50
+  candidate_size: 100
+  dense_weight: 0.226
+  bm25_weight: 0.672
+  identifier_weight: 0.103
+  fusion: weighted
+  category_weights: true
+index:
+  dir: indexes
+  cache_dir: .cache
+  ann: hnsw
+  flat_threshold: 2000
+  hnsw_m: 32
+  hnsw_ef_construction: 100
+  hnsw_ef_search: 128
+ranking:
+  reranker: linear
+  rerank_top_n: 50
+  weights:
+    semantic: 0.19
+    bm25: 0.483
+    identifier: 0.024
+    metadata: 0.123
+    structural: 0.18
+  use_structural: true
+  cross_encoder_name: cross-encoder/ms-marco-MiniLM-L-6-v2
+dedup:
+  enabled: true
+  similarity_threshold: 0.9

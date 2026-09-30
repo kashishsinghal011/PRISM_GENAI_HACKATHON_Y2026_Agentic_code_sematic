@@ -1,0 +1,21 @@
+corpus=20000 val_queries=250 test_queries=250
+built contextual index: {'build_seconds': 16.4, 'embeddings_computed': 20000, 'embeddings_from_cache': 0, 'n_docs': 20000, 'ann_backend': 'faiss-hnsw'}
+built raw index: {'build_seconds': 9.17, 'embeddings_computed': 20000, 'embeddings_from_cache': 0, 'n_docs': 20000, 'ann_backend': 'faiss-hnsw'}
+built metadata index: {'build_seconds': 8.69, 'embeddings_computed': 20000, 'embeddings_from_cache': 0, 'n_docs': 20000, 'ann_backend': 'faiss-hnsw'}
+1. BM25 only                                 MRR@10=0.4701 NDCG@10=0.5183 R@100=0.8160 lat=4.84ms
+2. Dense only (LSA)                          MRR@10=0.1399 NDCG@10=0.1653 R@100=0.5080 lat=4.18ms
+3. Dense + BM25 (hybrid)                     MRR@10=0.3637 NDCG@10=0.4082 R@100=0.7880 lat=4.54ms
+4. Hybrid + identifier channel               MRR@10=0.3550 NDCG@10=0.3990 R@100=0.7880 lat=4.74ms
+5. Hybrid + reranker (basic features)        MRR@10=0.3301 NDCG@10=0.3724 R@100=0.7880 lat=4.74ms
+6. + query preprocessing                     MRR@10=0.3221 NDCG@10=0.3625 R@100=0.7840 lat=4.69ms
+7. + metadata features                       MRR@10=0.3863 NDCG@10=0.4295 R@100=0.7840 lat=4.7ms
+8. + structural features (Full, default weights) MRR@10=0.3501 NDCG@10=0.3917 R@100=0.7840 lat=4.73ms
+9. Full system, weights tuned on val         MRR@10=0.4884 NDCG@10=0.5325 R@100=0.8160 lat=4.72ms
+10. Full features + LambdaMART (trained on val) MRR@10=0.4962 NDCG@10=0.5315 R@100=0.7840 lat=6.3ms
+representation=raw        dense only MRR@10=0.1246 NDCG@10=0.1557
+representation=raw        hybrid     MRR@10=0.3079 NDCG@10=0.3455
+representation=metadata   dense only MRR@10=0.0469 NDCG@10=0.0606
+representation=metadata   hybrid     MRR@10=0.2737 NDCG@10=0.3083
+representation=contextual dense only MRR@10=0.1399 NDCG@10=0.1653
+representation=contextual hybrid     MRR@10=0.3637 NDCG@10=0.4082
+version experiment: {'n_units': 4000, 'edited_fraction': 0.3, 'embeddings_v1': {'embeddings_computed': 4000, 'embeddings_from_cache': 0}, 'embeddings_v2_incremental': {'embeddings_computed': 1200, 'embeddings_from_cache': 2800}, 'no_dedup': {'unit_mrr_at_10': 0.3317, 'duplicate_rate_at_10': 0.4795}, 'dedup': {'unit_mrr_at_10': 0.3725, 'duplicate_rate_at_10': 0.0}, 'n_queries': 127}

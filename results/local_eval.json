@@ -1,0 +1,19 @@
+{
+ "dataset": "local_bench",
+ "n_docs": 20000,
+ "metrics": {
+  "ndcg_at_10": 0.3878981537668076,
+  "mrr_at_10": 0.3424722222222221,
+  "recall_at_100": 0.784,
+  "recall_at_10": 0.534,
+  "n_queries": 500
+ },
+ "index": {
+  "build_seconds": 33.1,
+  "embeddings_computed": 20000,
+  "embeddings_from_cache": 0,
+  "n_docs": 20000,
+  "ann_backend": "faiss-hnsw"
+ },
+ "note": "local proxy dataset, not AppsRetrieval"
+}

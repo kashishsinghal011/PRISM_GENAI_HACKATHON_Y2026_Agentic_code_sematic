@@ -1,0 +1,626 @@
+{
+ "dataset": "local_bench",
+ "n_corpus": 20000,
+ "n_test_queries": 250,
+ "n_val_queries": 250,
+ "note": "Proxy benchmark (docstring->function over installed Python source), NOT CoIR AppsRetrieval.",
+ "ablation": [
+  {
+   "approach": "1. BM25 only",
+   "ndcg_at_10": 0.5183,
+   "mrr_at_10": 0.4701,
+   "recall_at_100": 0.816,
+   "recall_at_10": 0.668,
+   "n_queries": 250,
+   "mean_latency_ms": 4.84,
+   "wall_s": 1.3,
+   "note": ""
+  },
+  {
+   "approach": "2. Dense only (LSA)",
+   "ndcg_at_10": 0.1653,
+   "mrr_at_10": 0.1399,
+   "recall_at_100": 0.508,
+   "recall_at_10": 0.248,
+   "n_queries": 250,
+   "mean_latency_ms": 4.18,
+   "wall_s": 1.1,
+   "note": ""
+  },
+  {
+   "approach": "3. Dense + BM25 (hybrid)",
+   "ndcg_at_10": 0.4082,
+   "mrr_at_10": 0.3637,
+   "recall_at_100": 0.788,
+   "recall_at_10": 0.548,
+   "n_queries": 250,
+   "mean_latency_ms": 4.54,
+   "wall_s": 1.2,
+   "note": ""
+  },
+  {
+   "approach": "4. Hybrid + identifier channel",
+   "ndcg_at_10": 0.399,
+   "mrr_at_10": 0.355,
+   "recall_at_100": 0.788,
+   "recall_at_10": 0.536,
+   "n_queries": 250,
+   "mean_latency_ms": 4.74,
+   "wall_s": 1.2,
+   "note": ""
+  },
+  {
+   "approach": "5. Hybrid + reranker (basic features)",
+   "ndcg_at_10": 0.3724,
+   "mrr_at_10": 0.3301,
+   "recall_at_100": 0.788,
+   "recall_at_10": 0.508,
+   "n_queries": 250,
+   "mean_latency_ms": 4.74,
+   "wall_s": 1.2,
+   "note": ""
+  },
+  {
+   "approach": "6. + query preprocessing",
+   "ndcg_at_10": 0.3625,
+   "mrr_at_10": 0.3221,
+   "recall_at_100": 0.784,
+   "recall_at_10": 0.492,
+   "n_queries": 250,
+   "mean_latency_ms": 4.69,
+   "wall_s": 1.2,
+   "note": ""
+  },
+  {
+   "approach": "7. + metadata features",
+   "ndcg_at_10": 0.4295,
+   "mrr_at_10": 0.3863,
+   "recall_at_100": 0.784,
+   "recall_at_10": 0.568,
+   "n_queries": 250,
+   "mean_latency_ms": 4.7,
+   "wall_s": 1.2,
+   "note": ""
+  },
+  {
+   "approach": "8. + structural features (Full, default weights)",
+   "ndcg_at_10": 0.3917,
+   "mrr_at_10": 0.3501,
+   "recall_at_100": 0.784,
+   "recall_at_10": 0.524,
+   "n_queries": 250,
+   "mean_latency_ms": 4.73,
+   "wall_s": 1.2,
+   "note": ""
+  },
+  {
+   "approach": "9. Full system, weights tuned on val",
+   "ndcg_at_10": 0.5325,
+   "mrr_at_10": 0.4884,
+   "recall_at_100": 0.816,
+   "recall_at_10": 0.668,
+   "n_queries": 250,
+   "mean_latency_ms": 4.72,
+   "wall_s": 1.2,
+   "note": "{\"retrieval\": {\"dense_weight\": 0.226, \"bm25_weight\": 0.672, \"identifier_weight\": 0.103}, \"weights\": {\"semantic\": 0.19, \"bm25\": 0.483, \"identifier\": 0.024, \"metadata\": 0.123, \"structural\": 0.18}}"
+  },
+  {
+   "approach": "10. Full features + LambdaMART (trained on val)",
+   "ndcg_at_10": 0.5315,
+   "mrr_at_10": 0.4962,
+   "recall_at_100": 0.784,
+   "recall_at_10": 0.64,
+   "n_queries": 250,
+   "mean_latency_ms": 6.3,
+   "wall_s": 1.6,
+   "note": ""
+  }
+ ],
+ "representation": [
+  {
+   "representation": "raw",
+   "system": "dense only",
+   "ndcg_at_10": 0.1557,
+   "mrr_at_10": 0.1246,
+   "recall_at_100": 0.468,
+   "recall_at_10": 0.256,
+   "n_queries": 250,
+   "mean_latency_ms": 4.63,
+   "wall_s": 1.2
+  },
+  {
+   "representation": "raw",
+   "system": "hybrid",
+   "ndcg_at_10": 0.3455,
+   "mrr_at_10": 0.3079,
+   "recall_at_100": 0.696,
+   "recall_at_10": 0.468,
+   "n_queries": 250,
+   "mean_latency_ms": 4.56,
+   "wall_s": 1.2
+  },
+  {
+   "representation": "metadata",
+   "system": "dense only",
+   "ndcg_at_10": 0.0606,
+   "mrr_at_10": 0.0469,
+   "recall_at_100": 0.292,
+   "recall_at_10": 0.104,
+   "n_queries": 250,
+   "mean_latency_ms": 3.4,
+   "wall_s": 0.9
+  },
+  {
+   "representation": "metadata",
+   "system": "hybrid",
+   "ndcg_at_10": 0.3083,
+   "mrr_at_10": 0.2737,
+   "recall_at_100": 0.676,
+   "recall_at_10": 0.416,
+   "n_queries": 250,
+   "mean_latency_ms": 3.72,
+   "wall_s": 1.0
+  },
+  {
+   "representation": "contextual",
+   "system": "dense only",
+   "ndcg_at_10": 0.1653,
+   "mrr_at_10": 0.1399,
+   "recall_at_100": 0.508,
+   "recall_at_10": 0.248,
+   "n_queries": 250,
+   "mean_latency_ms": 4.48,
+   "wall_s": 1.2
+  },
+  {
+   "representation": "contextual",
+   "system": "hybrid",
+   "ndcg_at_10": 0.4082,
+   "mrr_at_10": 0.3637,
+   "recall_at_100": 0.788,
+   "recall_at_10": 0.548,
+   "n_queries": 250,
+   "mean_latency_ms": 4.82,
+   "wall_s": 1.2
+  }
+ ],
+ "version_experiment": {
+  "n_units": 4000,
+  "edited_fraction": 0.3,
+  "embeddings_v1": {
+   "embeddings_computed": 4000,
+   "embeddings_from_cache": 0
+  },
+  "embeddings_v2_incremental": {
+   "embeddings_computed": 1200,
+   "embeddings_from_cache": 2800
+  },
+  "no_dedup": {
+   "unit_mrr_at_10": 0.3317,
+   "duplicate_rate_at_10": 0.4795
+  },
+  "dedup": {
+   "unit_mrr_at_10": 0.3725,
+   "duplicate_rate_at_10": 0.0
+  },
+  "n_queries": 127
+ },
+ "tuning_trials": [
+  {
+   "retrieval": {
+    "dense_weight": 0.55,
+    "bm25_weight": 0.3,
+    "identifier_weight": 0.15
+   },
+   "weights": {
+    "semantic": 0.5,
+    "bm25": 0.2,
+    "identifier": 0.1,
+    "metadata": 0.1,
+    "structural": 0.1
+   },
+   "val_ndcg_at_10": 0.384,
+   "val_mrr_at_10": 0.3348
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.35447416744109306,
+    "bm25_weight": 0.38728985171843266,
+    "identifier_weight": 0.25823598084047433
+   },
+   "weights": {
+    "semantic": 0.6175546298026098,
+    "bm25": 0.06384976583339769,
+    "identifier": 0.18708504698014294,
+    "metadata": 0.1220008258850922,
+    "structural": 0.009509731498757359
+   },
+   "val_ndcg_at_10": 0.2933,
+   "val_mrr_at_10": 0.2592
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.3198561716914061,
+    "bm25_weight": 0.6675426494547042,
+    "identifier_weight": 0.01260117885388943
+   },
+   "weights": {
+    "semantic": 0.581666480460073,
+    "bm25": 0.2252329491575502,
+    "identifier": 0.12563852929179706,
+    "metadata": 0.05731157952923878,
+    "structural": 0.010150461561340815
+   },
+   "val_ndcg_at_10": 0.3587,
+   "val_mrr_at_10": 0.3053
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.6350176603862931,
+    "bm25_weight": 0.1922987889232722,
+    "identifier_weight": 0.17268355069043467
+   },
+   "weights": {
+    "semantic": 0.636089741555106,
+    "bm25": 0.17000499560761187,
+    "identifier": 0.01386011958169947,
+    "metadata": 0.01221404471687372,
+    "structural": 0.16783109853870912
+   },
+   "val_ndcg_at_10": 0.301,
+   "val_mrr_at_10": 0.2566
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.2057152622610271,
+    "bm25_weight": 0.7690051905253843,
+    "identifier_weight": 0.025279547213588643
+   },
+   "weights": {
+    "semantic": 0.7082417364640018,
+    "bm25": 0.10482701592647685,
+    "identifier": 0.017699691707021903,
+    "metadata": 0.13750286150359287,
+    "structural": 0.031728694398906576
+   },
+   "val_ndcg_at_10": 0.3302,
+   "val_mrr_at_10": 0.2845
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.6375653832329369,
+    "bm25_weight": 0.27266497842886767,
+    "identifier_weight": 0.08976963833819539
+   },
+   "weights": {
+    "semantic": 0.6157305078855765,
+    "bm25": 0.0776194698521515,
+    "identifier": 0.14011508818819698,
+    "metadata": 0.009592495966809701,
+    "structural": 0.15694243810726521
+   },
+   "val_ndcg_at_10": 0.2478,
+   "val_mrr_at_10": 0.2117
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.17369468314656797,
+    "bm25_weight": 0.5592917905889534,
+    "identifier_weight": 0.2670135262644787
+   },
+   "weights": {
+    "semantic": 0.4491450787392637,
+    "bm25": 0.03732364913288289,
+    "identifier": 0.26660071092725973,
+    "metadata": 0.22060757499285172,
+    "structural": 0.02632298620774216
+   },
+   "val_ndcg_at_10": 0.3491,
+   "val_mrr_at_10": 0.3022
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.6442015231504097,
+    "bm25_weight": 0.26750460129677894,
+    "identifier_weight": 0.08829387555281139
+   },
+   "weights": {
+    "semantic": 0.3501401478333799,
+    "bm25": 0.0070079330467668795,
+    "identifier": 0.19251819706956025,
+    "metadata": 0.35988867057848567,
+    "structural": 0.0904450514718075
+   },
+   "val_ndcg_at_10": 0.35,
+   "val_mrr_at_10": 0.2969
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.26106335822643767,
+    "bm25_weight": 0.6444585229931136,
+    "identifier_weight": 0.09447811878044872
+   },
+   "weights": {
+    "semantic": 0.25398584559702014,
+    "bm25": 0.13837139743842625,
+    "identifier": 0.04526442489241055,
+    "metadata": 0.21040041831929013,
+    "structural": 0.3519779137528529
+   },
+   "val_ndcg_at_10": 0.4638,
+   "val_mrr_at_10": 0.4183
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.23815505090546854,
+    "bm25_weight": 0.38068989346592413,
+    "identifier_weight": 0.3811550556286074
+   },
+   "weights": {
+    "semantic": 0.5138360729424084,
+    "bm25": 0.31325670639547815,
+    "identifier": 0.02919143543134288,
+    "metadata": 0.0011181070663431002,
+    "structural": 0.14259767816442762
+   },
+   "val_ndcg_at_10": 0.3877,
+   "val_mrr_at_10": 0.3324
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.15364097064865237,
+    "bm25_weight": 0.346769911095624,
+    "identifier_weight": 0.4995891182557235
+   },
+   "weights": {
+    "semantic": 0.3986008268181364,
+    "bm25": 0.3055090835841469,
+    "identifier": 0.004695251339022286,
+    "metadata": 0.18717350874700533,
+    "structural": 0.104021329511689
+   },
+   "val_ndcg_at_10": 0.4673,
+   "val_mrr_at_10": 0.4163
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.3180974124738427,
+    "bm25_weight": 0.2567125806417284,
+    "identifier_weight": 0.425190006884429
+   },
+   "weights": {
+    "semantic": 0.4452209684441421,
+    "bm25": 0.13545020558225931,
+    "identifier": 0.22360001995837778,
+    "metadata": 0.09356370367083025,
+    "structural": 0.10216510234439065
+   },
+   "val_ndcg_at_10": 0.3508,
+   "val_mrr_at_10": 0.3051
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.6655298814578093,
+    "bm25_weight": 0.194138838873322,
+    "identifier_weight": 0.14033127966886863
+   },
+   "weights": {
+    "semantic": 0.39630290267412843,
+    "bm25": 0.33540823489844707,
+    "identifier": 0.13603985001320362,
+    "metadata": 0.1085467117486618,
+    "structural": 0.023702300665559266
+   },
+   "val_ndcg_at_10": 0.42,
+   "val_mrr_at_10": 0.3744
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.7115393595325944,
+    "bm25_weight": 0.17386031831817544,
+    "identifier_weight": 0.11460032214923016
+   },
+   "weights": {
+    "semantic": 0.5304044230613548,
+    "bm25": 0.06849623736737863,
+    "identifier": 0.008363748481900333,
+    "metadata": 0.29293647349098284,
+    "structural": 0.0997991175983834
+   },
+   "val_ndcg_at_10": 0.3557,
+   "val_mrr_at_10": 0.3119
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.5470351976130691,
+    "bm25_weight": 0.4443215279019293,
+    "identifier_weight": 0.008643274485001766
+   },
+   "weights": {
+    "semantic": 0.5965548264682031,
+    "bm25": 0.14007729379264172,
+    "identifier": 0.04571842819763296,
+    "metadata": 0.11878207391107751,
+    "structural": 0.0988673776304445
+   },
+   "val_ndcg_at_10": 0.3417,
+   "val_mrr_at_10": 0.3011
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.5375879585738,
+    "bm25_weight": 0.15029947281818018,
+    "identifier_weight": 0.31211256860801984
+   },
+   "weights": {
+    "semantic": 0.1613556172531982,
+    "bm25": 0.05603064699079585,
+    "identifier": 0.18529195952370955,
+    "metadata": 0.39328332709690333,
+    "structural": 0.2040384491353931
+   },
+   "val_ndcg_at_10": 0.3926,
+   "val_mrr_at_10": 0.349
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.513922921222701,
+    "bm25_weight": 0.35795109604806336,
+    "identifier_weight": 0.12812598272923553
+   },
+   "weights": {
+    "semantic": 0.6275019778643873,
+    "bm25": 0.2958094267925006,
+    "identifier": 0.02589715675891333,
+    "metadata": 0.019873756227255745,
+    "structural": 0.03091768235694312
+   },
+   "val_ndcg_at_10": 0.3504,
+   "val_mrr_at_10": 0.3029
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.384266078021175,
+    "bm25_weight": 0.278385828704115,
+    "identifier_weight": 0.33734809327471016
+   },
+   "weights": {
+    "semantic": 0.24290405927666764,
+    "bm25": 0.0492778058987232,
+    "identifier": 0.15703162419962088,
+    "metadata": 0.14921217514453908,
+    "structural": 0.40157433548044924
+   },
+   "val_ndcg_at_10": 0.3608,
+   "val_mrr_at_10": 0.3151
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.6063026036177475,
+    "bm25_weight": 0.09057547623099906,
+    "identifier_weight": 0.30312192015125355
+   },
+   "weights": {
+    "semantic": 0.52205079803013,
+    "bm25": 0.0787461140732271,
+    "identifier": 0.07002925611627112,
+    "metadata": 0.3179512249556479,
+    "structural": 0.011222606824723771
+   },
+   "val_ndcg_at_10": 0.3425,
+   "val_mrr_at_10": 0.3069
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.599903456663764,
+    "bm25_weight": 0.39795518087331466,
+    "identifier_weight": 0.00214136246292142
+   },
+   "weights": {
+    "semantic": 0.5539826880358594,
+    "bm25": 0.2592708774525545,
+    "identifier": 0.010406684172760618,
+    "metadata": 0.1341970079698669,
+    "structural": 0.04214274236895876
+   },
+   "val_ndcg_at_10": 0.4054,
+   "val_mrr_at_10": 0.3551
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.40169460482421093,
+    "bm25_weight": 0.2088673936769085,
+    "identifier_weight": 0.38943800149888064
+   },
+   "weights": {
+    "semantic": 0.7462839213212706,
+    "bm25": 0.0782541839948689,
+    "identifier": 0.03219008047031533,
+    "metadata": 0.10574188484925039,
+    "structural": 0.03752992936429471
+   },
+   "val_ndcg_at_10": 0.2761,
+   "val_mrr_at_10": 0.245
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.6501629914957566,
+    "bm25_weight": 0.32642773502169753,
+    "identifier_weight": 0.023409273482546036
+   },
+   "weights": {
+    "semantic": 0.629826791600011,
+    "bm25": 0.05045090423097101,
+    "identifier": 0.0005207396268007424,
+    "metadata": 0.121119288968161,
+    "structural": 0.19808227557405633
+   },
+   "val_ndcg_at_10": 0.2938,
+   "val_mrr_at_10": 0.2584
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.3755441380948145,
+    "bm25_weight": 0.03690184459898463,
+    "identifier_weight": 0.5875540173062008
+   },
+   "weights": {
+    "semantic": 0.473602437704046,
+    "bm25": 0.2017336236983532,
+    "identifier": 0.03943463158452738,
+    "metadata": 0.2402193862870476,
+    "structural": 0.045009920726025845
+   },
+   "val_ndcg_at_10": 0.3499,
+   "val_mrr_at_10": 0.3196
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.22555548432828978,
+    "bm25_weight": 0.6717752482308892,
+    "identifier_weight": 0.102669267440821
+   },
+   "weights": {
+    "semantic": 0.19045208569410518,
+    "bm25": 0.48311717435730434,
+    "identifier": 0.02385037672370625,
+    "metadata": 0.1226280658518753,
+    "structural": 0.17995229737300883
+   },
+   "val_ndcg_at_10": 0.5106,
+   "val_mrr_at_10": 0.4521
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.7688796752993589,
+    "bm25_weight": 0.20606549668066884,
+    "identifier_weight": 0.025054828019972362
+   },
+   "weights": {
+    "semantic": 0.28032187423495447,
+    "bm25": 0.33183998120856484,
+    "identifier": 0.05636008205746804,
+    "metadata": 0.09968331642437456,
+    "structural": 0.23179474607463804
+   },
+   "val_ndcg_at_10": 0.4266,
+   "val_mrr_at_10": 0.3843
+  },
+  {
+   "retrieval": {
+    "dense_weight": 0.3702773757583892,
+    "bm25_weight": 0.17662697485636905,
+    "identifier_weight": 0.45309564938524155
+   },
+   "weights": {
+    "semantic": 0.6718878266471686,
+    "bm25": 0.15354904459411942,
+    "identifier": 0.031979186854166855,
+    "metadata": 0.12948235312918321,
+    "structural": 0.013101588775362044
+   },
+   "val_ndcg_at_10": 0.3196,
+   "val_mrr_at_10": 0.281
+  }
+ ]
+}

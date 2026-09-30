@@ -1,0 +1,12 @@
+numpy>=1.26
+scipy>=1.11
+scikit-learn>=1.4
+faiss-cpu>=1.8
+pyyaml>=6.0
+streamlit>=1.35
+pytest>=8.0
+lightgbm>=4.0          # optional: LambdaMART reranker
+# Optional, needed for real pretrained embeddings + the official MTEB run:
+# sentence-transformers>=3.0
+# mteb>=2.0
+# datasets>=2.19

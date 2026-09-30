@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-code-intelligence"
+version = "0.1.0"
+description = "Semantic code retrieval and ranking: hybrid BM25 + dense + code-aware reranking, version-aware indexing"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "scikit-learn", "faiss-cpu", "pyyaml"]
+
+[project.optional-dependencies]
+full = ["sentence-transformers", "mteb>=2.0", "datasets", "lightgbm", "streamlit"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
